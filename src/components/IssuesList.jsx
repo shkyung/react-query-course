@@ -9,6 +9,8 @@ export default function IssuesList({ labels, status }) {
     return fetch(`/api/issues?${labelsString}${statusString}`).then((res) =>
       res.json()
     );
+  },{
+      staleTime: 1000 * 60
   });
   const [searchValue, setSearchValue] = useState("");
 
@@ -20,7 +22,6 @@ export default function IssuesList({ labels, status }) {
       enabled: searchValue.length > 0,
     }
   );
-  console.error("searchQuery : ", searchQuery)
 
   return (
     <div>
